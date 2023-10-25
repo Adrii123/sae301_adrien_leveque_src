@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-Pacifico {
+  font-family: 'Pacifico', cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* * {
+    border-style: inset;
+    border-width : 1px;
+    border-color: red;
+} */
