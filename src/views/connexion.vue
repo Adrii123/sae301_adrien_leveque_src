@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter()
 
 import PocketBase from 'pocketbase'
-const pb = new PocketBase("http://127.0.0.1:8090");
+const pb = new PocketBase("http://193.168.146.9:80");
 
 
 
@@ -27,7 +27,7 @@ const refresh = ()=>{
         isConnected.value = true
 
         avatar.value =
-        "http://127.0.0.1:8090/api/files/"  // Adresse serveur et repertoire des fichiers image
+        "http://193.168.146.9:80/api/files/"  // Adresse serveur et repertoire des fichiers image
         +currentUser.value.collectionId     // Id ou name de la collection concernée
         +"/"
         +currentUser.value.id               // Id de l'utilisateur connecté

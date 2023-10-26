@@ -1,6 +1,6 @@
 <script setup>
   import PocketBase from 'pocketbase'
-  const pb = new PocketBase("http://127.0.0.1:8090");
+  const pb = new PocketBase("http://193.168.146.9:80");
 </script>
 
 <template>
@@ -16,7 +16,7 @@
         <RouterLink class="text-black mr-7 font-medium text-sm font-inter" to="/">ACCUEIL</RouterLink>
         <RouterLink to="/vos_lunettes" class="text-black mr-7 font-medium text-sm font-inter">VOS LUNETTES</RouterLink>
         <RouterLink to="/nosBoutiques" class="text-black mr-7 font-medium text-sm font-inter">NOS BOUTIQUES</RouterLink>
-        <RouterLink to="/configurateur" class="text-black mr-7 font-medium text-sm font-inter">PERSONNALISEZ</RouterLink>
+        <RouterLink to="/configurateur" class="text-black mr-7 font-medium text-sm font-inter">PERSONNALISER</RouterLink>
         <RouterLink to="/connexion" class="text-black mr-7 font-medium text-sm font-inter">
           <img src="./assets/icons/Vector-1.svg" alt="logo_panier" class="h-6 w-6" />
         </RouterLink>
