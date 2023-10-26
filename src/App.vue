@@ -1,6 +1,6 @@
 <script setup>
   import PocketBase from 'pocketbase'
-  const pb = new PocketBase("http://193.168.146.9:80");
+  const pb = new PocketBase("http://127.0.0.1:8090/");
 </script>
 
 <template>

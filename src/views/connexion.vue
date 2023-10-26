@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter()
 
 import PocketBase from 'pocketbase'
-const pb = new PocketBase("http://193.168.146.9:80");
+const pb = new PocketBase("http://127.0.0.1:8090/");
 
 
 
@@ -27,7 +27,7 @@ const refresh = ()=>{
         isConnected.value = true
 
         avatar.value =
-        "http://193.168.146.9:80/api/files/"  // Adresse serveur et repertoire des fichiers image
+        "http://127.0.0.1:8090/api/files/"  // Adresse serveur et repertoire des fichiers image
         +currentUser.value.collectionId     // Id ou name de la collection concernée
         +"/"
         +currentUser.value.id               // Id de l'utilisateur connecté
@@ -58,14 +58,17 @@ const deconnect = ()=>{
     router.push({name:"home"})
 }
 
-
+const github = async()=> {
+    await pb.collection('utilisateurs').authWithOAuth2({ provider: "github" });
+        refresh()
+}
 
 </script>
 
 
 <template>
     <section>
-        <h1 class="text-center text-black font-inter text-5xl font-semibold uppercase mt-[100px]">Connection / Deconnection</h1>
+        <h1 class="text-center text-black font-inter text-5xl font-semibold uppercase mt-[100px]">Connexion / Deconnexion</h1>
         <div class="grid grid-cols-12 grid-rows-10 justify-center gap-20 mx-[4.38rem]">
 
             
@@ -84,7 +87,7 @@ const deconnect = ()=>{
                     <!-- <button class="bg-gray-300 w-full h-[2.5rem] px-1" @click.prevent="connect">Créer un compte</button> -->
                 </div>
                 <div class=" flex flex-col gap-[10px]">
-                    <button v-on:click="github()" class="bg-gray-300 w-full h-[2.5rem] px-1" >Se connecter avec Github</button>
+                    <button @click.prevent="github" class="bg-gray-300 w-full h-[2.5rem] px-1" >Se connecter avec Github</button>
                     <!-- <button class="bg-gray-300 w-full h-[2.5rem] px-1" @click.prevent="connect">Créer un compte</button> -->
                 </div>
             </form>
@@ -94,22 +97,4 @@ const deconnect = ()=>{
         </div>
     </section>
 </template>
-
-<script>
-
-export default {
-    methods: {
-    async github() {
-      await pb.collection("utilisateurs").authWithOAuth2({ provider: "github" });
-      if (pb.authStore.isValid) {
-        document.getElementById("status").innerHTML = "You are now logged in";
-        isConnected = true;
-        currentUser = pb.authStore.model;
-      }
-    },
-    }
-}
-
-
-
-</script>
+```
